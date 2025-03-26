@@ -14,8 +14,14 @@ export class AppComponent implements OnInit{
   theme = signal('light');
 
   ngOnInit(): void {
-      document.body.className = this.theme()
+    //update via hardcode
+    this.theme.set('dark')
+    //update via flip 
+    this.theme.update((currentVal)=> currentVal === 'light'? 'dark' : 'light')
+    document.body.className = this.theme()
   }
+
+
 
 
 }
