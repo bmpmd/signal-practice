@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, effect, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 @Component({
@@ -13,12 +13,21 @@ export class AppComponent implements OnInit{
 
   theme = signal('light');
 
+  label = this.theme()
   ngOnInit(): void {
     //update via hardcode
     this.theme.set('dark')
     //update via flip 
     this.theme.update((currentVal)=> currentVal === 'light'? 'dark' : 'light')
     document.body.className = this.theme()
+  }
+
+  constructor(){
+    //when this signal changes, do this logic
+    //just set label again to be updated 
+    effect(()=>{
+      this.label = this.theme()
+    })
   }
 
 
