@@ -1,0 +1,8 @@
+<label for="">price: {{this.price}}</label>
+<br>
+<label for="">quantity: </label>
+<input type="number" (change)="changeQuantity($event)" value="{{quantity()}}">
+
+<br>
+<label>Total computed price: {{totalPrice()}} </label>
+<br>
