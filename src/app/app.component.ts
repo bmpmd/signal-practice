@@ -2,11 +2,13 @@ import { Component, computed, effect, OnInit, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ComputedComponentComponent } from './computed-component/computed-component.component';
 import { CommonModule } from '@angular/common';
+import { Product } from './product';
+import { ProductListComponent } from './product-list/product-list.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, ComputedComponentComponent],
+  imports: [RouterOutlet, CommonModule, ComputedComponentComponent, ProductListComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -15,6 +17,11 @@ export class AppComponent implements OnInit{
 
   theme = signal('light');
 
+  allProducts: Product[] = [
+    {id: 1, name: "milk", price:1.50},
+    {id: 2, name: "eggs", price:9.50},
+    {id: 3, name: "bread", price:2.50},
+  ]
   
 
   //product list 
