@@ -3,3 +3,16 @@
 <br>
 <br>
 <app-computed-component></app-computed-component>
+<br>
+<div>
+  <input type="text" (input)="changeFilter($event)">
+</div>
+<div>
+  
+    <tr *ngFor="let prod of filteredProducts()">
+      <td>Item: {{prod.name}}</td>
+      <td>Price: {{prod.price}}</td>
+      
+    </tr>
+  
+</div>
